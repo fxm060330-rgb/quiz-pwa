@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react";
 import { getQuestionCount, importQuestions } from "@/lib/db";
+import { questions as embeddedQuestions } from "@/data/questions";
 
 interface AppState {
   questionCount: number;
@@ -36,11 +37,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       if (count === 0) {
         setImporting(true);
         try {
-          const res = await fetch("/data/questions.json");
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const questions = await res.json();
-          if (Array.isArray(questions) && questions.length > 0) {
-            await importQuestions(questions);
+          if (embeddedQuestions.length > 0) {
+            await importQuestions(embeddedQuestions);
             await refreshCount();
           }
         } catch (e) {
