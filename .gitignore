@@ -4,3 +4,6 @@ node_modules/
 *.tsbuildinfo
 
 .vercel
+scripts/git-credential.sh
+scripts/gitee-deploy.js
+scripts/github-deploy.js
