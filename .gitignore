@@ -7,3 +7,4 @@ node_modules/
 scripts/git-credential.sh
 scripts/gitee-deploy.js
 scripts/github-deploy.js
+ngrok.exe
